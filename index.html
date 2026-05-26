@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investment | James Keck Photography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', Georgia, serif;
+    background: #faf9f7;
+    color: #1a1a18;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  /* HEADER */
+  .inv-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #e0ddd8;
+  }
+
+  .inv-header h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: 48px;
+    letter-spacing: 0.1em;
+    color: #1a1a18;
+    margin-bottom: 0.5rem;
+  }
+
+  .inv-header .subtitle {
+    font-size: 13px;
+    color: #7a7870;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  /* SECTION LABELS */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #9a9890;
+    font-weight: 500;
+    margin: 2.5rem 0 0.5rem;
+  }
+
+  .section-intro {
+    font-size: 14px;
+    color: #6a6860;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+  }
+
+  /* COLLECTIONS GRID */
+  .collections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 0.75rem;
+  }
+
+  @media (max-width: 600px) {
+    .collections-grid { grid-template-columns: 1fr; }
+    .alacarte-grid { grid-template-columns: 1fr !important; }
+  }
+
+  .collection-card {
+    background: #ffffff;
+    border: 1px solid #e4e1db;
+    border-radius: 4px;
+    padding: 1.5rem 1.25rem;
+    position: relative;
+  }
+
+  .collection-card.featured {
+    border: 2px solid #b8a98a;
+    background: #fffdf9;
+  }
+
+  .featured-badge {
+    display: inline-block;
+    background: #f5efe3;
+    color: #8a6f3e;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 0.9rem;
+    font-weight: 500;
+  }
+
+  .collection-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+    color: #1a1a18;
+  }
+
+  .collection-price {
+    font-size: 30px;
+    font-weight: 500;
+    color: #1a1a18;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.15rem;
+  }
+
+  .collection-value {
+    font-size: 12px;
+    color: #9a9890;
+    margin-bottom: 1.1rem;
+    font-weight: 300;
+  }
+
+  .collection-items {
+    list-style: none;
+    border-top: 1px solid #ece9e3;
+    padding-top: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .collection-items li {
+    font-size: 13px;
+    color: #5a5855;
+    padding: 3px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-weight: 300;
+    line-height: 1.45;
+  }
+
+  .check {
+    color: #8a6f3e;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .note-pill {
+    display: inline-block;
+    font-size: 11px;
+    color: #8a8880;
+    background: #f2f0ec;
+    border-radius: 2px;
+    padding: 4px 10px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  /* A LA CARTE */
+  .alacarte-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .alacarte-card {
+    background: #ffffff;
+    border: 1px solid #e4e1db;
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem;
+  }
+
+  .alacarte-card h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: #1a1a18;
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid #ece9e3;
+  }
+
+  .alacarte-sub {
+    font-size: 11px;
+    color: #9a9890;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    padding: 5px 0;
+    border-bottom: 1px solid #f0ede8;
+    color: #5a5855;
+  }
+
+  .price-row:last-child { border-bottom: none; }
+
+  .price-row .size { font-weight: 400; color: #2a2a28; }
+  .price-row .amt { font-weight: 500; font-size: 12px; color: #3a3835; white-space: nowrap; }
+
+  /* FINE PRINT */
+  .fine-print {
+    margin-top: 2rem;
+    padding: 1.1rem 1.4rem;
+    background: #f2f0eb;
+    border-radius: 4px;
+    font-size: 12.5px;
+    color: #6a6860;
+    line-height: 1.9;
+    font-weight: 300;
+  }
+
+  .fine-print strong {
+    color: #2a2a28;
+    font-weight: 500;
+  }
+
+  /* FOOTNOTE */
+  .add-on-note {
+    font-size: 12px;
+    color: #8a8880;
+    margin-top: 0.6rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* CTA */
+  .cta-block {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid #e0ddd8;
+  }
+
+  .cta-block p {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: #4a4845;
+    margin-bottom: 1.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: #1a1a18;
+    color: #faf9f7;
+    padding: 14px 40px;
+    border-radius: 2px;
+    font-family: 'Jost', Georgia, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .cta-btn:hover { background: #3a3835; }
+
+  .cta-contact {
+    margin-top: 1.2rem;
+    font-size: 13px;
+    color: #8a8880;
+    font-weight: 300;
+  }
+
+  .cta-contact a {
+    color: #4a4845;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .divider {
+    display: inline-block;
+    margin: 0 0.5rem;
+    color: #c8c5c0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="inv-header">
+    <h1>Your Investment</h1>
+    <p class="subtitle">Custom Portrait Sessions &nbsp;·&nbsp; Northwest Houston &nbsp;·&nbsp; Heirloom Quality Prints &amp; Wall Art</p>
+  </header>
+
+  <!-- COLLECTIONS -->
+  <p class="section-label">Recommended Collections</p>
+  <p class="section-intro">Each collection bundles our most popular print sizes at a significant savings over à la carte pricing. Choose prints from multiple poses to beautifully document your family's story.</p>
+
+  <div class="collections-grid">
+
+    <!-- Silver -->
+    <div class="collection-card">
+      <p class="collection-name">Silver</p>
+      <p class="collection-price">$125</p>
+      <p class="collection-value">$146 à la carte value</p>
+      <ul class="collection-items">
+        <li><span class="check">&#10003;</span>1 &mdash; 8&times;10 print</li>
+        <li><span class="check">&#10003;</span>1 &mdash; 5&times;7 print</li>
+        <li><span class="check">&#10003;</span>1 &mdash; 4&times;6 print</li>
+        <li><span class="check">&#10003;</span>8 wallet prints</li>
+        <li><span class="check">&#10003;</span>Choose 2 poses</li>
+      </ul>
+      <span class="note-pill">Great starter collection</span>
+    </div>
+
+    <!-- Platinum (featured) -->
+    <div class="collection-card featured">
+      <span class="featured-badge">Most Popular</span>
+      <p class="collection-name">Platinum</p>
+      <p class="collection-price">$550</p>
+      <p class="collection-value">$657 à la carte value</p>
+      <ul class="collection-items">
+        <li><span class="check">&#10003;</span>1 &mdash; 20&times;30 wall print</li>
+        <li><span class="check">&#10003;</span>2 &mdash; 8&times;10 prints</li>
+        <li><span class="check">&#10003;</span>4 &mdash; 5&times;7 prints</li>
+        <li><span class="check">&#10003;</span>4 &mdash; 4&times;6 prints</li>
+        <li><span class="check">&#10003;</span>16 wallet prints</li>
+        <li><span class="check">&#10003;</span>Choose 4 poses</li>
+      </ul>
+      <span class="note-pill">Best value for families</span>
+    </div>
+
+    <!-- Black Label -->
+    <div class="collection-card">
+      <p class="collection-name">Black Label</p>
+      <p class="collection-price">$950</p>
+      <p class="collection-value">$2,246 à la carte value</p>
+      <ul class="collection-items">
+        <li><span class="check">&#10003;</span>1 &mdash; 24&times;36 canvas gallery wrap</li>
+        <li><span class="check">&#10003;</span>1 &mdash; 20&times;30 wall print</li>
+        <li><span class="check">&#10003;</span>8 &mdash; 8&times;10 prints</li>
+        <li><span class="check">&#10003;</span>16 &mdash; 5&times;7 prints</li>
+        <li><span class="check">&#10003;</span>16 &mdash; 4&times;6 prints</li>
+        <li><span class="check">&#10003;</span>16 wallet prints</li>
+        <li><span class="check">&#10003;</span>Smartphone app with chosen poses</li>
+        <li><span class="check">&#10003;</span>Choose 6 poses</li>
+      </ul>
+      <span class="note-pill">Heirloom experience</span>
+    </div>
+
+  </div>
+
+  <p class="add-on-note">&#43; Add a pose to any collection for $50 &nbsp;&middot;&nbsp; Digital files released for prints purchased once total exceeds $750</p>
+
+  <!-- A LA CARTE -->
+  <p class="section-label" style="margin-top:2.5rem">À La Carte Prints &amp; Products</p>
+  <p class="section-intro">Mix and match individual prints and art pieces. Prices in parentheses reflect special à la carte pricing available only at the initial sales meeting.</p>
+
+  <div class="alacarte-grid">
+
+    <div class="alacarte-card">
+      <h3>Gift Prints</h3>
+      <div class="price-row"><span class="size">8 Wallets</span><span class="amt">$29 &nbsp;($26)</span></div>
+      <div class="price-row"><span class="size">4&times;6</span><span class="amt">$29 &nbsp;($26)</span></div>
+      <div class="price-row"><span class="size">5&times;7</span><span class="amt">$39 &nbsp;($35)</span></div>
+      <div class="price-row"><span class="size">8&times;10</span><span class="amt">$49 &nbsp;($44)</span></div>
+    </div>
+
+    <div class="alacarte-card">
+      <h3>Wall Portraits</h3>
+      <span class="alacarte-sub">Styrene mounting back</span>
+      <div class="price-row"><span class="size">16&times;24</span><span class="amt">$159 &nbsp;($143)</span></div>
+      <div class="price-row"><span class="size">20&times;30</span><span class="amt">$229 &nbsp;($206)</span></div>
+      <div class="price-row"><span class="size">24&times;36</span><span class="amt">$339 &nbsp;($305)</span></div>
+    </div>
+
+    <div class="alacarte-card">
+      <h3>Canvas Gallery Wraps</h3>
+      <span class="alacarte-sub">1.5&Prime; thick gallery wrap</span>
+      <div class="price-row"><span class="size">16&times;24</span><span class="amt">$309 &nbsp;($278)</span></div>
+      <div class="price-row"><span class="size">20&times;30</span><span class="amt">$359 &nbsp;($323)</span></div>
+      <div class="price-row"><span class="size">24&times;36</span><span class="amt">$479 &nbsp;($431)</span></div>
+    </div>
+
+    <div class="alacarte-card">
+      <h3>Metal Prints</h3>
+      <span class="alacarte-sub">Float mount hangers</span>
+      <div class="price-row"><span class="size">16&times;24</span><span class="amt">$399 &nbsp;($359)</span></div>
+      <div class="price-row"><span class="size">20&times;30</span><span class="amt">$539 &nbsp;($485)</span></div>
+      <div class="price-row"><span class="size">24&times;36</span><span class="amt">$879 &nbsp;($791)</span></div>
+    </div>
+
+    <div class="alacarte-card">
+      <h3>Acrylic Prints</h3>
+      <span class="alacarte-sub">French hanger mounting</span>
+      <div class="price-row"><span class="size">16&times;24</span><span class="amt">$759 &nbsp;($683)</span></div>
+      <div class="price-row"><span class="size">20&times;30</span><span class="amt">$959 &nbsp;($863)</span></div>
+      <div class="price-row"><span class="size">24&times;36</span><span class="amt">$1,379 &nbsp;($1,241)</span></div>
+    </div>
+
+    <div class="alacarte-card">
+      <h3>Acrylic Blocks</h3>
+      <div class="price-row"><span class="size">5&times;7</span><span class="amt">$219 &nbsp;($197)</span></div>
+      <div class="price-row"><span class="size">8&times;10</span><span class="amt">$359 &nbsp;($323)</span></div>
+      <div class="price-row"><span class="size">8&times;12</span><span class="amt">$449 &nbsp;($404)</span></div>
+    </div>
+
+    <div class="alacarte-card">
+      <h3>Specialty Items</h3>
+      <div class="price-row"><span class="size">Accordion Mini Album (3&times;3)</span><span class="amt">$129 &nbsp;($116)</span></div>
+      <div class="price-row"><span class="size">Slideshow Movie</span><span class="amt">$199 &nbsp;($179)</span></div>
+      <div class="price-row"><span class="size">Photograph Cube (4&times;4)</span><span class="amt">$139 &nbsp;($125)</span></div>
+    </div>
+
+  </div>
+
+  <!-- FINE PRINT -->
+  <div class="fine-print">
+    <strong>À la carte special pricing</strong> — prices shown in parentheses are available only at your initial sales meeting. &nbsp;&middot;&nbsp;
+    <strong>Digital files</strong> for prints purchased (not including gift sizes) are released once your total purchase exceeds $750. &nbsp;&middot;&nbsp;
+    <strong>Custom Photoshop edits</strong> directed by clients are charged at $100/hr. &nbsp;&middot;&nbsp;
+    <strong>Sales tax</strong> applies to all purchases.
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <p>Ready to create something beautiful for your walls?</p>
+    <a class="cta-btn" href="mailto:James@JamesKeckPhotography.com">Book Your Session</a>
+    <div class="cta-contact">
+      <a href="tel:8325949026">(832) 594-9026</a>
+      <span class="divider">&middot;</span>
+      <a href="mailto:James@JamesKeckPhotography.com">James@JamesKeckPhotography.com</a>
+      <span class="divider">&middot;</span>
+      <a href="https://www.JamesKeckPhotography.com" target="_blank">JamesKeckPhotography.com</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
